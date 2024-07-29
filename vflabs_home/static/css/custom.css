@@ -1,10 +1,77 @@
-.card-title {
+/* .slim-block is a medium dark background block for text to fall on top of. */
+
+/*.card-title {
     color: white;
-    background-color: #343a40; /* Bootstrap's dark background color */
+    background-color: #343a40;
     display: inline-block;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    margin-top: -1.5rem; 
+    position: relative;
+    z-index: 10;
+}
+*/
+slim-block {
+    background-color: #343a40; /* Bootstrap's dark background color */
     padding: 0.5rem;
     border-radius: 0.25rem;
     margin-top: -1.5rem; /* Adjust as needed */
     position: relative;
     z-index: 10;
+    color: white;
 }
+
+.bar{
+    background-color: #8f2a2a;
+opacity: 1;
+background-image:  linear-gradient(30deg, #000000 12%, transparent 12.5%, transparent 87%, #000000 87.5%, #000000), linear-gradient(150deg, #000000 12%, transparent 12.5%, transparent 87%, #000000 87.5%, #000000), linear-gradient(30deg, #000000 12%, transparent 12.5%, transparent 87%, #000000 87.5%, #000000), linear-gradient(150deg, #000000 12%, transparent 12.5%, transparent 87%, #000000 87.5%, #000000), linear-gradient(60deg, #00000077 25%, transparent 25.5%, transparent 75%, #00000077 75%, #00000077), linear-gradient(60deg, #00000077 25%, transparent 25.5%, transparent 75%, #00000077 75%, #00000077);
+background-size: 18px 32px;
+background-position: 0 0, 0 0, 9px 16px, 9px 16px, 0 0, 9px 16px;
+}
+
+.fibrelike {
+    --s: 50px;
+    --c: #404450;
+    --_s: calc(2*var(--s)) calc(2*var(--s));
+    --_g: 35.36% 35.36% at;
+    --_c: #0000 66%,#20222a 68% 70%,#0000 72%;
+    background: 
+      radial-gradient(var(--_g) 100% 25%,var(--_c)) var(--s) var(--s)/var(--_s), 
+      radial-gradient(var(--_g) 0 75%,var(--_c)) var(--s) var(--s)/var(--_s), 
+      radial-gradient(var(--_g) 100% 25%,var(--_c)) 0 0/var(--_s), 
+      radial-gradient(var(--_g) 0 75%,var(--_c)) 0 0/var(--_s), 
+      repeating-conic-gradient(var(--c) 0 25%,#0000 0 50%) 0 0/var(--_s), 
+      radial-gradient(var(--_c)) 0 calc(var(--s)/2)/var(--s) var(--s) var(--c);
+    background-attachment: fixed;
+  }
+
+  .flow, body {
+    width: 100%;
+    height: 100%;
+  }
+  body {
+    background: #000000;
+  }
+  
+  .text-col-1 {
+    color: white;}
+
+.header_font {
+    font-family: 'Raleway', sans-serif;
+}
+
+/* .card-box {
+
+  
+
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center; 
+} */

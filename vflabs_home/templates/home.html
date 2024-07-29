@@ -3,72 +3,185 @@
 
 {% block title %}Home | VF Labs{% endblock %}
 
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+    .header_font {
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 0.5rem;
+    border-radius: none;
+    margin-top: -1.5rem; /* Adjust as needed */
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    }
+
+    .division {
+        margin-top:20px;
+        margin-bottom:20px;
+        margin-left: 14px;
+        margin-right: 25px;
+    }
+        .card-box {
+            color: white;
+            border: 0.5px solid white;
+            padding: 10px;
+        }
+
+        .slim-block {
+           /* background-color: #d1d1ff; */
+            padding: 0.5rem;
+            margin-top: 8px;
+            z-index: 10;
+            color: white;
+            border: 0.5px solid white;
+            width: 350px;
+        }
+
+        .slim-block2 {
+           /* background-color: #d1d1ff; */
+            padding: 0.5rem;
+            margin-top: 8px;
+            z-index: 10;
+            color: white;
+            border: 0.5px solid white;
+            width: 100%;
+        }
+
+        .container {
+            display: flex;
+            gap: 10.5px;
+            flex-wrap: wrap;
+        }
+
+        .square {
+            width: 350px;
+            height: auto; /* Adjusted for better responsiveness */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .square img {
+            width: 100%;
+            height: auto;
+        }
+
+        .square:nth-child(odd) {
+           
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .square {
+                width: 100%; /* Full width for mobile */
+                margin-bottom: 10px;
+            }
+
+            .slim-block {
+                margin-top: 10px;
+                margin-right: 0.1px;
+                margin-bottom: 10px;
+                width: 100%;
+            }
+        }
+
+    .underline {  border-bottom: 1px solid white;
+                    margin-bottom: 20px;
+                
+                width: 100% }
+    .text-color { color: white }
+    </style>
+</head>
+{% endblock %}
+
 {% block content %}
-    <div class="container mt-4">
+<body style="background-color: black;">
+
+<i class="fi fi-tr-piggy-bank"></i>
+
+    <div class="container mt-4" background="black">
         <div class="row align-items-center">
             <div class="col-md-4">
-                <img src="{% static 'images/vflabs.jpg' %}" class="img-thumbnail" alt="VF Labs Logo">
+                <img src="{% static 'images/vflabs_p.png' %}" class="img-thumbnail"  style="padding: 0; margin: 0; border: none; background-color: black;" width="250 px" alt="VF Labs Logo">
             </div>
             <div class="col-md-8">
-                <div class="jumbotron p-4">
-                    <h1 class="display-4">Welcome to VF Labs</h1>
-                    <p class="lead">VF Labs is a dynamic innovation hub dedicated to fostering the creation and development of cutting-edge technologies across multiple industries.
-                    The projects on this page are yet to be prototyped. You're welcome to invest in the projects that are either upcoming or currently on the market.</p>
+                <div class="flow">
+                    <h1 class="display-4 text-col-1 text-color">Welcome to VF Labs</h1>
+                    <p class="lead text-col-1 text-color">VF Labs is a dynamic innovation hub dedicated to fostering the creation and development of cutting-edge technologies across multiple industries.
+                    As a result, products on this page are not related and each product may have one or more different stakeholders. This presents anyone an opportunity to buy shares on a product they have 
+                    a strong sentiment toward. Processes are super intuitive.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <h2>Featured Projects</h2>
-    <div class="row">
-        <div class="col-md-4 mb-4">
-            <div class="card border-warning mb-4">
-                <img src="{% static 'images/nimix.png' %}" class="card-img-top" alt="Nimix">
-                <div class="card-body">
-                    <h5 class="card-title">Nimix</h5>
-                    <p class="card-text">Nimix is your versatile scientific calculator app designed for exams and beyond. Featuring advanced functionalities and a secure mode to prevent unauthorized exits during exams, Nimix ensures reliability and integrity when you need it most. Empowering students with precision and ease of use, Nimix is your go-to tool for academic success.</p>
-                </div>
+    
+    <div class="underline"></div>
+
+    <h2 class="header_font division slim-block2">Featured Projects</h2>
+
+    <div class="container">
+        <div class="square">
+            <img src="{% static 'images/nimix.jpg' %}" class="card-img-top" alt="Nimix">
+            <h5 class="slim-block">Nimix</h5>
+            <div class="card-box">
+                <p>Nimix is your versatile scientific calculator app designed for exams and beyond. Featuring advanced functionalities and a secure mode to prevent unauthorized exits during exams, Nimix ensures reliability and integrity when you need it most. Empowering students with precision and ease of use, Nimix is your go-to tool for academic success.</p>
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="card border-warning mb-4">
-                <img src="{% static 'images/slidespeak.jpg' %}" class="card-img-top" alt="SlideSpeak">
-                <div class="card-body">
-                    <h5 class="card-title">SlideSpeak</h5>
-                    <p class="card-text">SlideSpeak revolutionizes presentations with effortless slide control through speech. Seamlessly navigate slideshows using intuitive voice commands, ensuring a smooth and engaging presentation experience. Ideal for professionals and educators, SlideSpeak enhances efficiency and interactivity, making every presentation impactful and memorable.</p>
-                </div>
+        <div class="square">
+            <img src="{% static 'images/slidespeak.jpg' %}" class="card-img-top" alt="SlideSpeak">
+            <h5 class="slim-block">Slidespeak</h5>
+            <div class="card-box">
+                <p>SlideSpeak revolutionizes presentations with effortless slide control through speech. Seamlessly navigate slideshows using intuitive voice commands, ensuring a smooth and engaging presentation experience. Ideal for professionals and educators, SlideSpeak enhances efficiency and interactivity, making every presentation impactful and memorable.</p>
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="card border-warning mb-4">
-                <img src="{% static 'images/nsfp.jpg' %}" class="card-img-top" alt="NSFP">
-                <div class="card-body">
-                    <h5 class="card-title">NSFP</h5>
-                    <p class="card-text">NSFP (National Soccer Facilities Project), is an online platform empowering indie soccer teams with sponsorship opportunities in monetary support, facilities, and gear. Designed to uplift underrepresented community teams, NSFP aims to elevate national soccer performance by fostering fair competition at every level.</p>
-                </div>
+        <div class="square">
+            <img src="{% static 'images/rktship.jpg' %}" class="card-img-top" alt="NSFP">
+            <h5 class="slim-block">Rocketship CRM</h5>
+            <div class="card-box">
+                <p>Rocketship CRM is the ultimate tool for NPOs. It has been designed with role-based access for admins, fundraisers, and donors. Users can Create and manage fundraising campaigns, track donations and donor activities, gain valuable insights and analytics, and manage user roles and permissions, streamlining the management process.</p>
             </div>
         </div>
     </div>
 
-    <h2>Our Services</h2>
+    <div class="underline" style="padding-top:40px;"></div>
+
+      <h2 class="text-color" style="padding-bottom:20px;">Our Services</h2>
     <div class="row">
         {% for service in services %}
             <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    <img src="{% static 'images/service_icon.jpg' %}" class="card-img-top" alt="Service Icon">
+                <div class="card-box">
                     <div class="card-body">
                         <h5 class="card-title">{{ service.name }}</h5>
                         <p class="card-text">{{ service.description }}</p>
-                        {% if service.icon %}
-                            <img src="{{ service.icon }}" class="card-img-top" alt="{{ service.name }} icon">
-                        {% endif %}
                     </div>
                 </div>
             </div>
         {% endfor %}
     </div>
 
+<div class="underline" style="padding-top:40px;"></div>
+
+<div class="text-color">
     <h2>Contact Us</h2>
     <p><strong>Email:</strong> {{ contact_details.email }}</p>
     <p><strong>Phone:</strong> {{ contact_details.phone }}</p>
+</div>
+
+<div class="underline" style="padding-top:40px;"></div>
+
+</body>
 {% endblock %}
+
