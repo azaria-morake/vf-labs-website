@@ -1,1 +1,1 @@
-This is the main repo for the VF Labs llanding page.
+This is the code base for the vf labs website.
