@@ -12,7 +12,7 @@
 }
 */
 slim-block {
-    background-color: #343a40; /* Bootstrap's dark background color */
+    background-color: #2d333b; /* Bootstrap's dark background color */
     padding: 0.5rem;
     border-radius: 0.25rem;
     margin-top: -1.5rem; /* Adjust as needed */
@@ -75,3 +75,6 @@ background-position: 0 0, 0 0, 9px 16px, 9px 16px, 0 0, 9px 16px;
   box-sizing: border-box;
   text-align: center; 
 } */
+
+/* <div> <img src="{% static 'images/website.png' %}" align="right" height="25px" width="25px" alt="web-icon" class="custom-position-web"> </div>
+*/

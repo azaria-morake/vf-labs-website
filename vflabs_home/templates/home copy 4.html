@@ -9,65 +9,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
 
-    .underline2 {
-    width: 100%;
-    border-bottom: 1px solid white;
-    margin: 10px 0; /* Space above and below the underline */
-}
-
-    .card-box {
-    color: white;
-    border: 0.5px solid white;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    position: relative;
-    }
-
-    .icons-wrapper {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px; /* Space between icons */
-    width: 100%;
-    margin-top: 10px; /* Adjust to move icons down if needed */
-    position:relative;
-    }
-
-    .icon {
-    height: 25px;
-    width: 25px;
-    position: relative;
-    }
-
-    .icon:hover {
+    .card-box:hover {
     top: -5px;
     left: -5px;
-    width: calc(8% + 10px);
-    height: calc(8% + 10px);
-    
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
     }
 
-    .icon .hover-text {
-    display: none;
-    position: absolute;
-    left: -120px; /* Adjust based on your layout */
-    top: 137.5%;
-    transform: translateY(-50%);
-    background-color: white;
-    color: black;
-    padding: 5px;
-    border-radius: none;
-    font-size: 12px;
-    white-space: nowrap;
+    .custom-position-web {
+    position: absolute; /* or fixed */
+    top: 775px; /* Adjust as needed */
+    left: 400px; /* Adjust as needed */
+    height: 25px;
+    width: 25px;
     }
 
-    .icon:hover .hover-text {
-    display: block;
+    .custom-position-share {
+    position: absolute; /* or fixed */
+    top: 775px; /* Adjust as needed */
+    left: 428px; /* Adjust as needed */
+    -
+    height: 25px;
+    width: 25px;
     }
 
+    .custom-position-invest {
+    position: absolute; /* or fixed */
+    top: 775px; /* Adjust as needed */
+    left: 360px; /* Adjust as needed */
+    height: 25px;
+    width: 25px;
+    }
 
+    .custom-position-like {
+    position: absolute; /* or fixed */
+    top: 775px; /* Adjust as needed */
+    left: 320px; /* Adjust as needed */
+    height: 25px;
+    width: 25px;
+    }
+
+    .custom-position-bookmark {
+    position: absolute; /* or fixed */
+    top: 775px; /* Adjust as needed */
+    left: 395px; /* Adjust as needed */
+    height: 25px;
+    width: 25px;
+    }
 
     .header_font {
     font-family: 'Raleway', sans-serif;
@@ -88,6 +76,11 @@
         margin-left: 14px;
         margin-right: 25px;
     }
+        .card-box {
+            color: white;
+            border: 0.5px solid white;
+            padding: 10px;
+        }
 
         .slim-block {
            /* background-color: #d1d1ff; */
@@ -184,29 +177,16 @@
     <div class="underline"></div>
 
     <h2 class="header_font division slim-block2">Featured Projects</h2>
+<div> <img src="{% static 'images/share.png' %}" align="right" height="25px" width="25px" alt="web-icon" class="custom-position-share"> </div>
+<div> <img src="{% static 'images/like.png' %}" align="right" height="25px" width="25px" alt="web-icon" class="custom-position-like"> </div>
+<div> <img src="{% static 'images/invest.png' %}" align="right" height="25px" width="25px" alt="web-icon" class="custom-position-invest"> </div>
+<div> <img src="{% static 'images/bookmark.png' %}" align="right" height="25px" width="25px" alt="web-icon" class="custom-position-bookmark"> </div>
     <div class="container">
         <div class="square">
             <img src="{% static 'images/nimix.jpg' %}" class="card-img-top" alt="Nimix">
             <h5 class="slim-block">Nimix</h5>
             <div class="card-box">
                 <p>Nimix is your versatile scientific calculator app designed for exams and beyond. Featuring advanced functionalities and a secure mode to prevent unauthorized exits during exams, Nimix ensures reliability and integrity when you need it most. Empowering students with precision and ease of use, Nimix is your go-to tool for academic success.</p>
-                 <div class="underline2"></div>
-                <div class="icons-wrapper">
-            
-                    <div class="icon">
-                        <img src="{% static 'images/share.png' %}" alt="Share">
-                        <span class="hover-text">Share this!</span>
-                    </div>
-                    <div class="icon">
-                        <img src="{% static 'images/like.png' %}" alt="Like">
-                        <span class="hover-text">Like this!</span>
-                    </div>
-                    <div class="icon">
-                        <img src="{% static 'images/invest.png' %}" alt="Invest">
-                         <span class="hover-text">Invest now.</span>
-                    </div>
-                     <!-- Add more icons as needed -->
-                </div>            
             </div>
         </div>
         <div class="square">
