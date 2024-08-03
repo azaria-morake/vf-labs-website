@@ -22,6 +22,7 @@ class Project(models.Model):
     featured = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    likes = models.PositiveIntegerField(default=0)  # Add a likes field
     # image = models.ImageField(upload_to='project_images/', blank=True, null=True)
     def __str__(self):
         return self.name

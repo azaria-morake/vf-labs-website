@@ -78,3 +78,10 @@ background-position: 0 0, 0 0, 9px 16px, 9px 16px, 0 0, 9px 16px;
 
 /* <div> <img src="{% static 'images/website.png' %}" align="right" height="25px" width="25px" alt="web-icon" class="custom-position-web"> </div>
 */
+
+/* .card-box:hover {
+  top: -5px;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+} */

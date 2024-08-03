@@ -29,45 +29,53 @@
     .icons-wrapper {
     display: flex;
     justify-content: flex-end;
-    gap: 10px; /* Space between icons */
+    gap: 10px;
     width: 100%;
-    margin-top: 10px; /* Adjust to move icons down if needed */
-    position:relative;
-    }
+    position: relative;
+}
 
     .icon {
     height: 25px;
     width: 25px;
     position: relative;
-    }
+    display: flex;
+    align-items: center;
+    transition: margin-left 0.3s ease, opacity 0.3s ease; /* Smooth transition for shifting effect */
+}
 
-    .icon:hover {
+    /* .icon:hover {
     top: -5px;
     left: -5px;
     width: calc(8% + 10px);
     height: calc(8% + 10px);
     
-    }
+    } */
 
-    .icon .hover-text {
+   .icon .hover-text {
     display: none;
     position: absolute;
-    left: -120px; /* Adjust based on your layout */
-    top: 137.5%;
-    transform: translateY(-50%);
+    right: 100%; /* Position to the left of the icon */
+    margin-right: 10px; /* Space between the icon and the text */
     background-color: white;
     color: black;
+    font-weight: bold;
     padding: 5px;
-    border-radius: none;
+    border-radius: 5px;
     font-size: 12px;
     white-space: nowrap;
-    }
+    z-index: 10; /* Ensure text appears above other elements */
+}
 
     .icon:hover .hover-text {
     display: block;
-    }
-
-
+}
+    
+ .icon:hover {
+    margin-left: -100px; /* Shift preceding elements to the left */
+}
+.icons-wrapper:hover .icon:not(:hover) {
+    opacity: 0; /* Hide non-hovered icons only when one is hovered */
+}
 
     .header_font {
     font-family: 'Raleway', sans-serif;
@@ -187,29 +195,76 @@
     <div class="container">
         <div class="square">
             <img src="{% static 'images/nimix.jpg' %}" class="card-img-top" alt="Nimix">
-            <h5 class="slim-block">Nimix</h5>
-            <div class="card-box">
-                <p>Nimix is your versatile scientific calculator app designed for exams and beyond. Featuring advanced functionalities and a secure mode to prevent unauthorized exits during exams, Nimix ensures reliability and integrity when you need it most. Empowering students with precision and ease of use, Nimix is your go-to tool for academic success.</p>
-                 <div class="underline2"></div>
-                <div class="icons-wrapper">
+                <h5 class="slim-block">Nimix</h5>
+                    <div class="card-box">
+                        <p>Nimix is your versatile scientific calculator app designed for exams and beyond. Featuring advanced functionalities and a secure mode to prevent unauthorized exits during exams, Nimix ensures reliability and integrity when you need it most. Empowering students with precision and ease of use, Nimix is your go-to tool for academic success.</p>
+                            <div class="underline2"></div>
+                                <div class="icons-wrapper">
             
-                    <div class="icon">
-                        <img src="{% static 'images/share.png' %}" alt="Share">
-                        <span class="hover-text">Share this!</span>
-                    </div>
-                    <div class="icon">
-                        <img src="{% static 'images/like.png' %}" alt="Like">
-                        <span class="hover-text">Like this!</span>
-                    </div>
-                    <div class="icon">
-                        <img src="{% static 'images/invest.png' %}" alt="Invest">
-                         <span class="hover-text">Invest now.</span>
-                    </div>
+                                    <div class="icon">
+                                        <img src="{% static 'images/share.png' %}" alt="Share" onclick="copyToClipboard('{{ request.build_absolute_uri }}')">
+                                            <span class="hover-text">Share this!</span>
+                                    </div>
+                                        <div class="icon">
+                                             <img src="{% static 'images/like.png' %}" alt="Like" onclick="likeProject({{ project.id }})">
+                                                <span class="hover-text">Like this!</span>
+                                        </div>
+                                            <div class="icon">
+                                                <a href="{% url 'invest_sign_up' %}">
+                                                    <img src="{% static 'images/invest.png' %}" alt="Invest">
+                                                </a>
+                                                    <span class="hover-text">Invest in this product and gain shares. Click to complete form.</span>
+                                            </div>
                      <!-- Add more icons as needed -->
-                </div>            
-            </div>
+                                </div>
+
+                <script>
+        function copyToClipboard(url) {
+        navigator.clipboard.writeText(url).then(function() {
+        alert('Link copied to clipboard');
+        }, function(err) {
+        alert('Failed to copy: ', err);
+        });
+        }
+
+    function likeProject(projectId) {
+            fetch(`/like/${projectId}/`, {
+            method: 'POST',
+            headers: {
+            'X-CSRFToken': '{{ csrf_token }}',
+            },
+            })
+            .then(response => response.json())
+            .then(data => {
+            alert(`Likes: ${data.likes}`);
+            });
+            }
+            </script>           
+                    </div>
         </div>
+
+
         <div class="square">
+        <div class="underline2"></div>
+
+        <div class="icons-wrapper">
+            
+                                    <div class="icon">
+                                        <img src="{% static 'images/share.png' %}" alt="Share" onclick="copyToClipboard('{{ request.build_absolute_uri }}')">
+                                            <span class="hover-text">Share this!</span>
+                                    </div>
+                                        <div class="icon">
+                                             <img src="{% static 'images/like.png' %}" alt="Like" onclick="likeProject({{ project.id }})">
+                                                <span class="hover-text">Like this!</span>
+                                        </div>
+                                            <div class="icon">
+                                                <a href="{% url 'invest_sign_up' %}">
+                                                    <img src="{% static 'images/invest.png' %}" alt="Invest">
+                                                </a>
+                                                    <span class="hover-text">Invest in this product and gain shares. Click to complete form.</span>
+                                            </div>
+                     <!-- Add more icons as needed -->
+                                </div>
             <img src="{% static 'images/slidespeak.jpg' %}" class="card-img-top" alt="SlideSpeak">
             <h5 class="slim-block">Slidespeak</h5>
             <div class="card-box">
@@ -217,6 +272,25 @@
             </div>
         </div>
         <div class="square">
+        <div class="underline2"></div>
+        <div class="icons-wrapper">
+            
+                                    <div class="icon">
+                                        <img src="{% static 'images/share.png' %}" alt="Share" onclick="copyToClipboard('{{ request.build_absolute_uri }}')">
+                                            <span class="hover-text">Share this!</span>
+                                    </div>
+                                        <div class="icon">
+                                             <img src="{% static 'images/like.png' %}" alt="Like" onclick="likeProject({{ project.id }})">
+                                                <span class="hover-text">Like this!</span>
+                                        </div>
+                                            <div class="icon">
+                                                <a href="{% url 'invest_sign_up' %}">
+                                                    <img src="{% static 'images/invest.png' %}" alt="Invest">
+                                                </a>
+                                                    <span class="hover-text">Invest in this product and gain shares. Click to complete form.</span>
+                                            </div>
+                     <!-- Add more icons as needed -->
+                                </div>
             <img src="{% static 'images/rktship.jpg' %}" class="card-img-top" alt="NSFP">
             <h5 class="slim-block">Rocketship CRM</h5>
             <div class="card-box">

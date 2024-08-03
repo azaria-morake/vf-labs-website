@@ -17,9 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from vflabs_home.views import home #contact
+from vflabs_home import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     # path('contact/', contact, name='contact'),
+    path('like/<int:project_id>/', views.like_project, name='like_project'),
+    path('invest-sign-up/', views.invest_sign_up, name='invest_sign_up'),
 ] 

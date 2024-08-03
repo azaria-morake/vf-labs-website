@@ -1,18 +1,36 @@
 
 from django.contrib import admin
 from .models import Project, Service, ContactUs
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_protect
+from django.http import JsonResponse
+from .forms import SignUpForm
+
+@csrf_protect
+def invest_sign_up(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  # Redirect to home page after sign-up
+    else:
+        form = SignUpForm()
+    return render(request, 'sign_up.html', {'form': form})
 
 def home(request):
     featured_projects = Project.objects.filter(featured=True)[:3]
     services = Service.objects.all()
     contact_details = {
         'email': 'info@vflabs.co.za',
-        'phone': '+27 74 1408 428',
+        'phone': '+27 74 428 1408',
     }
     return render(request, 'home.html', {'projects': featured_projects, 'services': services, 'contact_details': contact_details})
 
+def like_project(request, project_id):
+    project = get_object_or_404(Project, id=project_id)
+    project.likes += 1
+    project.save()
+    return JsonResponse({'likes': project.likes})
 """ 
 Redundant contact form code:
 
