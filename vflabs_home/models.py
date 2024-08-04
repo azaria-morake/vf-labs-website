@@ -9,6 +9,16 @@ and it will also have a contact us. """
 class VflabsHome(models.Model):
     pass
 
+class Investment(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    # Add more fields as needed
+
+    def __str__(self):
+        return self.name
+
+
+
 class Project(models.Model):
     """showcases current and future projects"""
     STATUS_CHOICES = (

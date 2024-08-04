@@ -1,21 +1,25 @@
 
 from django.contrib import admin
-from .models import Project, Service, ContactUs
+from .models import Project, Service, ContactUs, Investment
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.http import JsonResponse
 from .forms import SignUpForm
 
-@csrf_protect
+@csrf_exempt
 def invest_sign_up(request):
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')  # Redirect to home page after sign-up
-    else:
-        form = SignUpForm()
-    return render(request, 'sign_up.html', {'form': form})
+        # Access form data
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+         # Save the data to the database
+        investment = Investment(name=name, email=email)
+        investment.save()
+        
+        # Return a JSON response
+        return JsonResponse({'success': True})
+
+    return JsonResponse({'success': False})
 
 def home(request):
     featured_projects = Project.objects.filter(featured=True)[:3]

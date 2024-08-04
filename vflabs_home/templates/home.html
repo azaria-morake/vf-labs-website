@@ -9,6 +9,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
 
+    /* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+    color: white;
+    background-color: black; /* Black background */
+    border: none;
+    width: 40px; /* Adjust width as needed */
+    height: 40px; /* Adjust height as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px; /* Adjust font size for 'X' */
+    font-weight: bold;
+    border-radius: 4px; /* Optional: for slightly rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    position: absolute;
+    top: 10px; /* Adjust position as needed */
+    right: 10px; /* Adjust position as needed */
+    lign-height: 1px;
+    padding: 0;
+    margin: 0;
+}
+
+.close:hover,
+.close:focus {
+    background-color: darkgray; /* Change background color on hover/focus */
+    color: white; /* Ensure 'X' remains white */
+    text-decoration: none; /* Remove underline */
+}
+
+/* end modal styles */
+
     .underline2 {
     width: 100%;
     border-bottom: 1px solid white;
@@ -198,7 +251,9 @@
                 <h5 class="slim-block">Nimix</h5>
                     <div class="card-box">
                         <p>Nimix is your versatile scientific calculator app designed for exams and beyond. Featuring advanced functionalities and a secure mode to prevent unauthorized exits during exams, Nimix ensures reliability and integrity when you need it most. Empowering students with precision and ease of use, Nimix is your go-to tool for academic success.</p>
-                            <div class="underline2"></div>
+                           
+                    </div>
+                               <div class="underline2"></div>
                                 <div class="icons-wrapper">
             
                                     <div class="icon">
@@ -210,7 +265,7 @@
                                                 <span class="hover-text">Like this!</span>
                                         </div>
                                             <div class="icon">
-                                                <a href="{% url 'invest_sign_up' %}">
+                                                <a href="#">
                                                     <img src="{% static 'images/invest.png' %}" alt="Invest">
                                                 </a>
                                                     <span class="hover-text">Invest in this product and gain shares. Click to complete form.</span>
@@ -239,40 +294,19 @@
             alert(`Likes: ${data.likes}`);
             });
             }
-            </script>           
-                    </div>
+            </script> 
         </div>
 
 
         <div class="square">
-        <div class="underline2"></div>
-
-        <div class="icons-wrapper">
-            
-                                    <div class="icon">
-                                        <img src="{% static 'images/share.png' %}" alt="Share" onclick="copyToClipboard('{{ request.build_absolute_uri }}')">
-                                            <span class="hover-text">Share this!</span>
-                                    </div>
-                                        <div class="icon">
-                                             <img src="{% static 'images/like.png' %}" alt="Like" onclick="likeProject({{ project.id }})">
-                                                <span class="hover-text">Like this!</span>
-                                        </div>
-                                            <div class="icon">
-                                                <a href="{% url 'invest_sign_up' %}">
-                                                    <img src="{% static 'images/invest.png' %}" alt="Invest">
-                                                </a>
-                                                    <span class="hover-text">Invest in this product and gain shares. Click to complete form.</span>
-                                            </div>
-                     <!-- Add more icons as needed -->
-                                </div>
+        
             <img src="{% static 'images/slidespeak.jpg' %}" class="card-img-top" alt="SlideSpeak">
             <h5 class="slim-block">Slidespeak</h5>
             <div class="card-box">
                 <p>SlideSpeak revolutionizes presentations with effortless slide control through speech. Seamlessly navigate slideshows using intuitive voice commands, ensuring a smooth and engaging presentation experience. Ideal for professionals and educators, SlideSpeak enhances efficiency and interactivity, making every presentation impactful and memorable.</p>
             </div>
-        </div>
-        <div class="square">
-        <div class="underline2"></div>
+            <div class="underline2"></div>
+
         <div class="icons-wrapper">
             
                                     <div class="icon">
@@ -284,19 +318,87 @@
                                                 <span class="hover-text">Like this!</span>
                                         </div>
                                             <div class="icon">
-                                                <a href="{% url 'invest_sign_up' %}">
+                                                <a href="#">
                                                     <img src="{% static 'images/invest.png' %}" alt="Invest">
                                                 </a>
                                                     <span class="hover-text">Invest in this product and gain shares. Click to complete form.</span>
                                             </div>
                      <!-- Add more icons as needed -->
                                 </div>
+                           <script>
+        function copyToClipboard(url) {
+        navigator.clipboard.writeText(url).then(function() {
+        alert('Link copied to clipboard');
+        }, function(err) {
+        alert('Failed to copy: ', err);
+        });
+        }
+
+    function likeProject(projectId) {
+            fetch(`/like/${projectId}/`, {
+            method: 'POST',
+            headers: {
+            'X-CSRFToken': '{{ csrf_token }}',
+            },
+            })
+            .then(response => response.json())
+            .then(data => {
+            alert(`Likes: ${data.likes}`);
+            });
+            }
+            </script>
+        </div>
+
+        <div class="square">
+        
             <img src="{% static 'images/rktship.jpg' %}" class="card-img-top" alt="NSFP">
             <h5 class="slim-block">Rocketship CRM</h5>
             <div class="card-box">
                 <p>Rocketship CRM is the ultimate tool for NPOs. It has been designed with role-based access for admins, fundraisers, and donors. Users can Create and manage fundraising campaigns, track donations and donor activities, gain valuable insights and analytics, and manage user roles and permissions, streamlining the management process.</p>
             </div>
+
+            <div class="underline2"></div>
+        <div class="icons-wrapper">
+            
+                                    <div class="icon">
+                                        <img src="{% static 'images/share.png' %}" alt="Share" onclick="copyToClipboard('{{ request.build_absolute_uri }}')">
+                                            <span class="hover-text">Share this!</span>
+                                    </div>
+                                        <div class="icon">
+                                             <img src="{% static 'images/like.png' %}" alt="Like" onclick="likeProject({{ project.id }})">
+                                                <span class="hover-text">Like this!</span>
+                                        </div>
+                                            <div class="icon">
+                                                <a href="#">
+                                                    <img src="{% static 'images/invest.png' %}" alt="Invest">
+                                                </a>
+                                                    <span class="hover-text">Invest in this product and gain shares. Click to complete form.</span>
+                                            </div>
+                     <!-- Add more icons as needed -->
+                                </div>
         </div>
+               <script>
+        function copyToClipboard(url) {
+        navigator.clipboard.writeText(url).then(function() {
+        alert('Link copied to clipboard');
+        }, function(err) {
+        alert('Failed to copy: ', err);
+        });
+        }
+
+    function likeProject(projectId) {
+            fetch(`/like/${projectId}/`, {
+            method: 'POST',
+            headers: {
+            'X-CSRFToken': '{{ csrf_token }}',
+            },
+            })
+            .then(response => response.json())
+            .then(data => {
+            alert(`Likes: ${data.likes}`);
+            });
+            }
+            </script>
     </div>
 
     <div class="underline" style="padding-top:40px;"></div>
@@ -324,6 +426,93 @@
 </div>
 
 <div class="underline" style="padding-top:40px;"></div>
+
+<div id="investModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Invest in this product</h2>
+        <div class="underline" style="padding-top:20px; border-color:black; width:45%;"></div>
+        <p>Once you've completed the form, one of our sales consultants will <br>
+        make contact to go over the finer details and prepare the deal.</br> </p>
+        <div class="underline" style="padding-top:20px; border-color:black; width:45%;"></div>
+        <div id="form-content">
+            <form action="{% url 'invest_sign_up' %}" method="post">
+                {% csrf_token %}
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <!-- Add other fields as needed -->
+
+                <input type="submit" value="Invest">
+            </form>
+        </div>
+        <div id="confirmation-message" style="display:none;">
+            <p>Thank you for your investment! Your submission has been received.</p>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("investModal");
+
+    // Get the buttons that open the modal
+    var investButtons = document.querySelectorAll('.icon a');
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the invest button, open the modal
+    investButtons.forEach(function(button) {
+        button.onclick = function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            modal.style.display = "block";
+        }
+    });
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // Handle form submission with AJAX
+    document.querySelector('form').onsubmit = function(event) {
+        event.preventDefault(); // Prevent form from submitting normally
+        
+        var formData = new FormData(this);
+        
+        fetch("{% url 'invest_sign_up' %}", {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Display confirmation message in the modal
+                this.innerHTML = "<p>Thank you for your investment! We will be in touch.</p>";
+            } else {
+                // Handle any errors
+                alert("Something went wrong. Please try again.");
+            }
+        });
+    };
+</script>
+
+
 
 </body>
 {% endblock %}
