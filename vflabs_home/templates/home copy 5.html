@@ -9,28 +9,145 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
 
-    p {
-    margin-bottom: 20px; /* Adjust spacing between paragraphs as needed */
-    line-height: 1.5; /* Improve readability */
-}
+    /*form start*/
 
-.p2 {
-    border: 1px solid black;
-    text-aligment: center;
-    background-color: black;
-    padding: 20px;
-}
+    @charset "UTF-8";
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+        /* Global Styles */
+        *,
+        *::before,
+        *::after {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          text-decoration: none;
+        }
 
-    /* VF Industries Logo */
+        html {
+          position: relative;
+          overflow-x: hidden;
+          scroll-behavior: smooth;
+          background-color: #EDEEE9;
+        }
 
-    .vfind { 
-        width: 250px;
-        height: 250px;
-        margin-bottom: 20px;
-        
-    }
-    
+        html body {
+          background-color: #EDEEE9;
+          color: #303030;
+          font-family: "Inter", sans-serif;
+          min-height: 100vh;
+          width: 100%;
+          padding: 2.5vh 10vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+        }
+
+        .container {
+          width: 100%;
+          max-width: 768px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 2rem 2rem 1.5rem;
+          background-color: #D8DBCE;
+        }
+
+        @media (min-width: 768px) {
+          .container {
+            flex-direction: row;
+            align-items: center;
+          }
+        }
+
+        .cta-form {
+          margin-bottom: 2rem;
+          text-align: center;
+        }
+
+        @media (min-width: 768px) {
+          .cta-form {
+            margin-bottom: 0;
+            margin-right: 2rem;
+            text-align: left;
+          }
+        }
+
+        .cta-form h2 {
+          font-size: 1.5rem;
+          width: 100%;
+          max-width: 25ch;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        @media (min-width: 768px) {
+          .cta-form h2 {
+            text-align: left;
+            margin: 0;
+          }
+        }
+
+        .cta-form p {
+          margin-top: 1rem;
+          font-size: 1rem;
+          width: 100%;
+          max-width: 24ch;
+        }
+
+        .form {
+          align-self: center;
+        }
+
+        .form__input {
+          width: clamp(120px, 50vw, 420px);
+          height: 2.5rem;
+          padding: 0 1.25rem;
+          border: 1px solid #303030;
+          border-radius: 2px;
+          margin: 0.625rem auto;
+          transition: all 250ms;
+        }
+
+        .form__input:focus {
+          outline: none;
+          border-top-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .form__input:focus + .form__label, 
+        .form__input:not(:placeholder-shown) + .form__label {
+          transform: translateY(-4.5rem) scale(1);
+          color: #303030;
+        }
+
+        .form__input::placeholder {
+          display: none;
+          color: transparent;
+          -webkit-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+
+        .form__input:not(:placeholder-shown) {
+          border-top-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .form__label {
+          font-size: 1rem;
+          color: #909090;
+          display: block;
+          transform: translate(1.25rem, -2.5rem);
+          transform-origin: 0 0;
+          transition: all 500ms;
+          -webkit-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          pointer-events: none;
+        }
+
+    /* form end */
 
     /* Modal Styles */
 .modal {
@@ -48,104 +165,32 @@
 }
 
 .modal-content {
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-
     background-color: #fefefe;
     margin: 10% auto; /* 10% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 50%; /* Could be more or less, depending on screen size */
-    position: relative; /* Ensure close button is positioned correctly */
 }
 
-/* Form container */
-.form-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center the form within the container */
-    width: 100%; /* Adjust as needed */
-}
-
-/* Form elements */
-form {
-    width: 100%; /* Full width for the form */
-    max-width: 500px; /* Max width for the form */
-}
-
-/* Label and input styling */
-form label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333; /* Adjust color as needed */
-}
-
-form input {
-    width: 100%;
-    width: calc(100% - 20px); /* Full width minus padding */
-    padding: 8px;
-    border: 1px solid #ccc; /* Border styling */
-    border-radius: 4px; /* Rounded corners */
-}
-
-/* Button styling */
-form input[type="submit"] {
-    background-color: #007bff; /* Button background color */
-    color: white; /* Text color */
-    border: none;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-form input[type="submit"]:hover {
-    background-color: #0056b3; /* Darker color on hover */
-}
-
-/* form container end *//
-
-.form-group {
-    margin-bottom: 15px; /* Space between fields */
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    margin-bottom: 5px; /* Space between label and input */
-}
-
-.form-group input {
-    padding: 8px; /* Add padding inside input fields */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    width: 100%; /* Full width of container */
-    box-sizing: border-box; /* Includes padding in width */
-}
-
-input[type="submit"] {
-    background-color: #4CAF50; /* Green background */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-input[type="submit"]:hover {
-    background-color: #45a049; /* Darker green on hover */
-}
 .close {
-    display: none;
+    color: white;
+    background-color: black; /* Black background */
+    border: none;
+    width: 40px; /* Adjust width as needed */
+    height: 40px; /* Adjust height as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px; /* Adjust font size for 'X' */
+    font-weight: bold;
+    border-radius: 4px; /* Optional: for slightly rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    position: absolute;
+    top: 10px; /* Adjust position as needed */
+    right: 10px; /* Adjust position as needed */
+    lign-height: 1px;
+    padding: 0;
+    margin: 0;
 }
 
 .close:hover,
@@ -154,12 +199,6 @@ input[type="submit"]:hover {
     color: white; /* Ensure 'X' remains white */
     text-decoration: none; /* Remove underline */
 }
-
- /* Centered text */
-    .centered-text {
-        text-align: center;
-        width: 100%;
-    }
 
 /* end modal styles */
 
@@ -455,7 +494,7 @@ input[type="submit"]:hover {
             <img src="{% static 'images/rktship.jpg' %}" class="card-img-top" alt="NSFP">
             <h5 class="slim-block">Rocketship CRM</h5>
             <div class="card-box">
-                <p>Rocketship CRM is both a website and CRM system. The robust system offers a seamless experience for users to compare prices across multiple companies while providing a powerful CRM system for companies to manage leads and sales, enhancing efficiency and maximizing value for both users and businesses.</p>
+                <p>Rocketship CRM is the ultimate tool for NPOs. It has been designed with role-based access for admins, fundraisers, and donors. Users can Create and manage fundraising campaigns, track donations and donor activities, gain valuable insights and analytics, and manage user roles and permissions, streamlining the management process.</p>
             </div>
 
             <div class="underline2"></div>
@@ -526,58 +565,35 @@ input[type="submit"]:hover {
     <p><strong>Phone:</strong> {{ contact_details.phone }}</p>
 </div>
 
-
+<div class="underline" style="padding-top:40px;"></div>
 
 <div id="investModal" class="modal">
     <div class="modal-content">
-        <img src="{% static 'images/VF Industries.jpg' %}" class="card-img-top vfind" alt="VF Industries">
-        <div id="investment-section" class="form-content">
-    <!-- Description -->
-    <div id="investment-description" class="centered-text">
-                    <h2>Invest in this product</h2>
-                    
-                    <div class="underline" style="border-color: 1px black; width:45%;"></div>
-                    <p>
-                        By making a generous investment in this product, you continue shaping the future.
-                        In return for your investment, you earn shares from this product. The shares
-                        will be calculated based on your investment amount.
-                    </p>
-                    <p>
-                        Once you've completed the form, one of our sales consultants will
-                        make contact to go over the finer details and prepare a suitable deal.
-                    </p>
-                </div>
-    
-    <!-- Form Fields -->
-    <form id="investment-form" action="{% url 'invest_sign_up' %}" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-                        <label for="names">Full name/s:</label>
-                        <input type="text" id="names" name="names" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone:</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    <input type="submit" value="Submit">
-                </form>
-</div>
+        <span class="close">&times;</span>
+        <h2>Invest in this product</h2>
+        <div class="underline" style="padding-top:20px; border-color:black; width:45%;"></div>
+        <p>Once you've completed the form, one of our sales consultants will <br>
+        make contact to go over the finer details and prepare the deal.</br> </p>
+        <div class="underline" style="padding-top:20px; border-color:black; width:45%;"></div>
+        <div id="form-content">
+            <form action="{% url 'invest_sign_up' %}" method="post">
+                {% csrf_token %}
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br><br>
 
-<!-- Confirmation Message -->
-            <div id="confirmation-message" class="centered-text" style="display:none;">
-                <p>Thank you for your interest! We will contact you shortly.</p>
-            </div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
 
-        <br></br>
-        <p>Powered by Vertical Forge</p>
+                <!-- Add other fields as needed -->
+
+                <input type="submit" value="Invest">
+            </form>
+        </div>
+        <div id="confirmation-message" style="display:none;">
+            <p>Thank you for your investment! Your submission has been received.</p>
+        </div>
     </div>
 </div>
-
-
 
 
 <script>
@@ -588,7 +604,7 @@ input[type="submit"]:hover {
     var investButtons = document.querySelectorAll('.icon a');
 
     // Get the <span> element that closes the modal
-    // var span = document.getElementsByClassName("close")[0];
+    var span = document.getElementsByClassName("close")[0];
 
     // When the user clicks on the invest button, open the modal
     investButtons.forEach(function(button) {
@@ -599,9 +615,9 @@ input[type="submit"]:hover {
     });
 
     // When the user clicks on <span> (x), close the modal
-    // span.onclick = function() {
-    //    modal.style.display = "none";
-    // }
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
@@ -626,11 +642,8 @@ input[type="submit"]:hover {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                  // Hide the description
-        document.getElementById("investment-section").style.display = "none";
-
-        // Show the confirmation message
-        document.getElementById("confirmation-message").style.display = "block";
+                // Display confirmation message in the modal
+                this.innerHTML = "<p>Thank you for your investment! We will be in touch.</p>";
             } else {
                 // Handle any errors
                 alert("Something went wrong. Please try again.");

@@ -10,8 +10,9 @@ class VflabsHome(models.Model):
     pass
 
 class Investment(models.Model):
-    name = models.CharField(max_length=100)
+    full_name = models.CharField(max_length=100)
     email = models.EmailField()
+    phone_number = models.CharField(max_length=15)
     # Add more fields as needed
 
     def __str__(self):

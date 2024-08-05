@@ -10,10 +10,11 @@ from .forms import SignUpForm
 def invest_sign_up(request):
     if request.method == 'POST':
         # Access form data
-        name = request.POST.get('name')
+        full_name = request.POST.get('names')  # map the form's 'names' field to 'full_name'
         email = request.POST.get('email')
+        phone_number = request.POST.get('phone')  # map the form's 'phone' field to 'phone_number'
          # Save the data to the database
-        investment = Investment(name=name, email=email)
+        investment = Investment(full_name=full_name, email=email, phone_number=phone_number)
         investment.save()
         
         # Return a JSON response
@@ -25,7 +26,7 @@ def home(request):
     featured_projects = Project.objects.filter(featured=True)[:3]
     services = Service.objects.all()
     contact_details = {
-        'email': 'info@vflabs.co.za',
+        'email': 'info@vf-industries.co.za',
         'phone': '+27 74 428 1408',
     }
     return render(request, 'home.html', {'projects': featured_projects, 'services': services, 'contact_details': contact_details})
