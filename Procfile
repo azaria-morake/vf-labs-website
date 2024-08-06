@@ -1,1 +1,1 @@
-web: gunicorn vf-labs.wsgi
+web: gunicorn vf-labs.wsgi --log-file -
