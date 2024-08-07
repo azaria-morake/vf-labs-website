@@ -287,6 +287,16 @@ input[type="submit"]:hover {
             width: 350px;
         }
 
+        slim-block:hover {
+    background-color: #2b6fb3; /* Bootstrap's dark background color */
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    margin-top: -1.5rem; /* Adjust as needed */
+    position: relative;
+    z-index: 10;
+    color: white;
+}
+
         .slim-block2 {
            /* background-color: #d1d1ff; */
             padding: 0.5rem;
@@ -311,6 +321,13 @@ input[type="submit"]:hover {
             align-items: center;
             justify-content: center;
         }
+
+         square:hover {
+  top: -5px;
+  left: -5px;
+  width: calc(10% + 10px);
+  height: calc(10% + 10px);
+} 
 
         .square img {
             width: 100%;
@@ -427,7 +444,7 @@ input[type="submit"]:hover {
 
         <div class="square">
         
-            <img src="{% static 'images/slidespeak.jpg' %}" class="card-img-top" alt="SlideSpeak">
+            <img src="{% static 'images/slidespeak.png' %}" class="card-img-top" alt="SlideSpeak">
             <h5 class="slim-block">Slidespeak</h5>
             <div class="card-box">
                 <p>SlideSpeak revolutionizes presentations with effortless slide control through speech. Seamlessly navigate slideshows using intuitive voice commands, ensuring a smooth and engaging presentation experience. Ideal for professionals and educators, SlideSpeak enhances efficiency and interactivity, making every presentation impactful and memorable.</p>
@@ -478,7 +495,7 @@ input[type="submit"]:hover {
 
         <div class="square">
         
-            <img src="{% static 'images/rktship.jpg' %}" class="card-img-top" alt="NSFP">
+            <img src="{% static 'images/rktship.png' %}" class="card-img-top" alt="NSFP">
             <h5 class="slim-block">Rocketship CRM</h5>
             <div class="card-box">
                 <p>Rocketship CRM is both a website and CRM system. The robust system offers a seamless experience for users to compare prices across multiple companies while providing a powerful CRM system for companies to manage leads and sales, enhancing efficiency and maximizing value for both users and businesses.</p>
