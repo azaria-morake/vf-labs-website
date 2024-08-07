@@ -180,6 +180,32 @@ input[type="submit"]:hover {
     position: relative;
     }
 
+     .card-box2 {
+    color: white;
+    border: 0.5px solid white;
+    padding-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    width: 350px;
+    height: 200px;
+    }
+
+    .card-box2:hover {
+  top: -5px;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+    }
+
+        .underline3 {
+    width: 100%;
+    border-bottom: 1px solid white;
+    margin: 10px 0; /* Space above and below the underline */
+}
+
     .icons-wrapper {
     display: flex;
     justify-content: flex-end;
@@ -508,13 +534,16 @@ input[type="submit"]:hover {
     <div class="row">
         {% for service in services %}
             <div class="col-md-4 mb-4">
-                <div class="card-box">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ service.name }}</h5>
-                        <p class="card-text">{{ service.description }}</p>
+                <div class="card-box2">
+                    
+                        <div class="card-body">
+                            <h5 class="card-title">{{ service.name }}</h5>
+                            <div class="underline3"></div>
+                            <p class="card-text">{{ service.description }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            
         {% endfor %}
     </div>
 
