@@ -92,6 +92,9 @@ STATICFILES_DIRS = [
     BASE_DIR / 'vflabs_home' / 'static',
 ]
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
